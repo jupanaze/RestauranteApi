@@ -1,2 +1,3 @@
 # RestauranteApi
-Proyecto creado para Cilco 3 Mision TIC
+Proyecto creado para Ciclo 3 Misión TIC 
+Equipo 2
