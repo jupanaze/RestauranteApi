@@ -26,7 +26,7 @@ async def auth_user(user_in: UsuarioIn):
 async def create_user(user_in: UsuarioIn):
     user_in_db=update_usuario(user_in)
     user_out = UsuarioOut(**user_in_db.dict())
-    user_in_db = get_usuario(user_out.username)
-    if user_in_db == None:
-        raise HTTPException(status_code=404,detail="El usuario ha sido creado")
+    user_new = get_usuario(user_out.username)
+    if user_new == None:
+        raise HTTPException(status_code=404,detail="El usuario no ha sido creado")
     return {"Creado": True}
