@@ -1,0 +1,18 @@
+Hola Soy Sara
+soy sara otra vez
+Hola soy Julie
+<<<<<<< Updated upstream
+Hola, soy Antonia en la rama 2
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
+Hola, soy Antonia
+Hola Soy Juan
+<<<<<<< Updated upstream
+Soy yo otra vez
+=======
+=======
+
+Hola, soy Antonia en la rama 2
+>>>>>>> main
+>>>>>>> Stashed changes
