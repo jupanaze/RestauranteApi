@@ -131,3 +131,33 @@ async def delete_producto(producto_in: ProductoIn):
     producto_out = delete_producto(producto_in_db)
     return producto_out
 
+@api.get("/venta/list/")
+async def lista_ventas():
+    ventas_in_db = get_all_ventas()
+    ventas_out = []
+    for venta in ventas_in_db:
+        venta_out = VentaOut(**venta.dict())
+        ventas_out.append(venta_out)
+    return ventas_out
+
+
+@api.put("/venta/make/")
+async def make_venta(venta_in: VentaIn):
+    
+    user_in_db = get_usuario(venta_in.username)
+
+    if user_in_db == None:
+        
+        raise HTTPException(status_code=404, detail="El usuario no tiene permisos para hacer ventas"
+     ### venta_total = acá tendría en cuenta la cantidad de productos y precio del producto para saber el precio total de acuerdo a inventario
+    venta_in_db = VentaInDB(**venta_in.dict())
+    venta_in_db = save_venta(venta_in_db)
+    venta_out = VentaOut(**venta_in_db.dict())
+
+    return  venta_out    
+
+@api.get("/venta/consulta/{telefono}")
+async def buscar_venta(telefono: int):
+    venta_in_db = get_all_ventas(telefono)
+    if venta_in_db == None:
+        raise HTTPException(status_code=404,
