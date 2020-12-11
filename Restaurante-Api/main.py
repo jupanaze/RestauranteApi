@@ -7,6 +7,8 @@ from models.cliente_models import ClienteIn, ClienteOut, ClienteInCreate
 from db.inventario_db import ProductoInDB
 from db.inventario_db import update_producto, get_producto, create_producto, delete_producto, get_all_productos
 from models.inventario_models import ProductoIn, ProductoOut, ProductoInCreate
+from models.venta_models import VentaIn, VentaOut
+from db.venta_db import VentaInDB, get_all_ventas,save_venta,get_venta
 
 import datetime
 
