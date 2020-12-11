@@ -104,7 +104,7 @@ async def buscar_productos():
     productos_out = []
     for producto in productos_in_db:
         producto_out = ProductoOut(**producto.dict())
-        producto_out.append(producto_out)
+        productos_out.append(producto_out)
     return productos_out
 
 @api.put("/producto/update/")
