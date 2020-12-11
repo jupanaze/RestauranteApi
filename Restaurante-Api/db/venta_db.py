@@ -3,6 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
+
 class VentaInDB(BaseModel):
     venta_id: int = 0
     venta_fecha: datetime = datetime.now()
@@ -11,7 +12,7 @@ class VentaInDB(BaseModel):
     username: str
 
 def get_all_ventas():
-    return database_ventas.values()
+    return database_ventas
 
 
 database_ventas = []
@@ -26,7 +27,7 @@ def save_venta(ventas_in_db: VentaInDB):
 
 
 def get_venta(telefono: int):
-    if telefono in database_ventas.values():
+    if telefono in database_ventas:
         return database_ventas[telefono]
     else:
         return None
