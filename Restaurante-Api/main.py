@@ -10,7 +10,7 @@ from models.inventario_models import ProductoIn, ProductoOut, ProductoInCreate
 from models.venta_models import VentaIn, VentaOut
 from db.venta_db import VentaInDB, get_all_ventas,save_venta,get_venta
 
-from datetime import datetime
+import datetime
 
 from fastapi import FastAPI
 from fastapi import HTTPException
@@ -148,12 +148,13 @@ async def make_venta(venta_in: VentaIn):
     
     user_in_db = get_usuario(venta_in.username)
 
-    if user_in_db == None:        
+    if user_in_db == None:
+        
         raise HTTPException(status_code=404, detail="El usuario no tiene permisos para hacer ventas")
      ### venta_total = acá tendría en cuenta la cantidad de productos y precio del producto para saber el precio total de acuerdo a inventario
-    ventas_in_db = VentaInDB(**venta_in.dict())
-    ventas_in_db = save_venta(ventas_in_db)
-    venta_out = VentaOut(**ventas_in_db.dict())
+    venta_in_db = VentaInDB(**venta_in.dict())  
+    venta_in_db = save_venta(venta_in_db)
+    venta_out = VentaOut(**venta_in_db.dict())
 
     return  venta_out    
 
